@@ -1,4 +1,4 @@
-package org.zipcode.luckyMoney;
+/*package org.zipcode.luckyMoney;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 /*Controller + responsebody = @RestController*/
 
 
-@RestController
+/*@RestController
 @RequestMapping("/hello")
 public class HelloController {
 
@@ -20,4 +20,4 @@ public class HelloController {
      //  return "description: " + limitConfig.getDescription() ;
         return "id: " + id ;
     }
-}
+}*/
