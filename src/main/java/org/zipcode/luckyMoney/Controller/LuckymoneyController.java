@@ -2,9 +2,12 @@ package org.zipcode.luckyMoney.Controller;
 
 
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.zipcode.luckyMoney.Aspect.HttpAspect;
 import org.zipcode.luckyMoney.Entity.Luckymoney;
 import org.zipcode.luckyMoney.Repository.LuckymoneyRepository;
 import org.zipcode.luckyMoney.Service.LuckymoneyService;
@@ -17,6 +20,8 @@ import java.util.Optional;
 @RestController
 public class LuckymoneyController {
 
+    private final static Logger logger = LoggerFactory.getLogger(HttpAspect.class);
+
     @Autowired
     private LuckymoneyRepository repository;
 
@@ -26,6 +31,7 @@ public class LuckymoneyController {
     /* the list of red pocket(Luckyjmoney) */
     @GetMapping("/luckymoneys")
     public List<Luckymoney> luckymoneyList() {
+        logger.info("luckymoneyList");
         return repository.findAll();
     }
 

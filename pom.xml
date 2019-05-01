@@ -45,6 +45,10 @@
 		</dependency>
 		<dependency>
 			<groupId>mysql</groupId>
+			<artifactId>spring-boot-starter-aop</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
 		</dependency>
 	</dependencies>
