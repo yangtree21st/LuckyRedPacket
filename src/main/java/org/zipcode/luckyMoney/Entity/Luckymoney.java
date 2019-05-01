@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.Max;
 import java.math.BigDecimal;
 
 @Entity
@@ -12,6 +13,8 @@ public class Luckymoney {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+
+    @Max(value = 5000 , message = "The money in one red packet should not higher than $5000")
     private BigDecimal money;
 
     private String producer;

@@ -1,12 +1,15 @@
 package org.zipcode.luckyMoney.Controller;
 
 
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.zipcode.luckyMoney.Entity.Luckymoney;
 import org.zipcode.luckyMoney.Repository.LuckymoneyRepository;
 import org.zipcode.luckyMoney.Service.LuckymoneyService;
 
+import javax.validation.Valid;
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.Optional;
@@ -27,11 +30,13 @@ public class LuckymoneyController {
     }
 
     @PostMapping("/luckymoneys")
-    public Luckymoney create(@RequestParam("producer") String producer,
-                             @RequestParam("money") BigDecimal money) {
-        Luckymoney luckymoney = new Luckymoney();
-        luckymoney.setProducer(producer);
-        luckymoney.setMoney(money);
+    public Luckymoney create(@Valid Luckymoney luckymoney, BindingResult bindingResult) {
+        if(bindingResult.hasErrors()){
+            System.out.println(bindingResult.getFieldError().getDefaultMessage());
+            return null;
+        }
+        luckymoney.setProducer(luckymoney.getProducer());
+        luckymoney.setMoney(luckymoney.getMoney());
 
         return repository.save(luckymoney);
     }
