@@ -1,4 +1,4 @@
-package org.zipcode.luckyMoney;
+package org.zipcode.luckyMoney.Entity;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

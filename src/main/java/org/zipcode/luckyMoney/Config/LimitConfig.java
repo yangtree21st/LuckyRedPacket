@@ -1,4 +1,4 @@
-package org.zipcode.luckyMoney;
+package org.zipcode.luckyMoney.Config;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
