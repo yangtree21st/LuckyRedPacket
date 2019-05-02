@@ -9,8 +9,10 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.zipcode.luckyMoney.Aspect.HttpAspect;
 import org.zipcode.luckyMoney.Entity.Luckymoney;
+import org.zipcode.luckyMoney.Entity.Result;
 import org.zipcode.luckyMoney.Repository.LuckymoneyRepository;
 import org.zipcode.luckyMoney.Service.LuckymoneyService;
+import org.zipcode.luckyMoney.Utils.ResultUtil;
 
 import javax.validation.Valid;
 import java.math.BigDecimal;
@@ -36,15 +38,19 @@ public class LuckymoneyController {
     }
 
     @PostMapping("/luckymoneys")
-    public Luckymoney create(@Valid Luckymoney luckymoney, BindingResult bindingResult) {
+    public Result<Luckymoney> create(@Valid Luckymoney luckymoney, BindingResult bindingResult) {
         if(bindingResult.hasErrors()){
-            System.out.println(bindingResult.getFieldError().getDefaultMessage());
-            return null;
+
+            return ResultUtil.error(1,bindingResult.getFieldError().getDefaultMessage());
         }
         luckymoney.setProducer(luckymoney.getProducer());
         luckymoney.setMoney(luckymoney.getMoney());
 
-        return repository.save(luckymoney);
+//        Result result =new Result();
+//        result.setCode(0);
+//        result.setData(repository.save(luckymoney));
+
+        return ResultUtil.success(repository.save(luckymoney));
     }
 
     // find the redpocket by id
@@ -74,6 +80,12 @@ public class LuckymoneyController {
     public void createTwo(){
           service.creatTwo();
     }
+
+    @GetMapping(value = "/luckymoneys/getAmountOne/{id}")
+    public void getAmountOne(@PathVariable("id") Integer id) throws Exception{
+             service.getAmountOne(id);
+    }
+
 }
 
 
