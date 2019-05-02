@@ -57,4 +57,14 @@ public class Luckymoney {
     public void setRecipient(String recipient) {
         this.recipient = recipient;
     }
+
+    @Override
+    public String toString() {
+        return "Luckymoney{" +
+                "id=" + id +
+                ", money=" + money +
+                ", producer='" + producer + '\'' +
+                ", recipient='" + recipient + '\'' +
+                '}';
+    }
 }
