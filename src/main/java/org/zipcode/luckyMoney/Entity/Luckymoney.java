@@ -5,6 +5,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.Max;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 
@@ -18,9 +19,9 @@ public class Luckymoney {
 
     @NotNull(message = "It must have money in")
     private BigDecimal money;
-
+    @NotBlank(message = "It must have a producer")
     private String producer;
-
+    @NotBlank(message = "It must have a recipient")
     private String recipient;
 
 
