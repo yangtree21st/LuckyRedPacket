@@ -38,13 +38,14 @@ public class LuckymoneyService {
 
     public void getAmountOne(Integer id) throws Exception{
         Luckymoney luckymoney = repository.findById(id).get();
-        double money = luckymoney.getMoney().doubleValue();
+        BigDecimal money = luckymoney.getMoney();
+        BigDecimal few = BigDecimal.valueOf(5);
 
-        if(money < 10){
+        if(money.compareTo(few) < 0){
             // return "You give too few")
             throw new LuckyMoneyException(ResultEnum.FEW_MONEY);
 
-        }else if ( money > 600){
+        }else if ( money.compareTo(BigDecimal.valueOf(600)) > 0 ){
             // return "You give too much"
              throw new LuckyMoneyException(ResultEnum.MUCH_MONEY);
         }
@@ -52,7 +53,10 @@ public class LuckymoneyService {
 
 
     }
-
+    /* find a luckymoney information by its id,
+    * @param id
+    * @return
+     */
     public  Luckymoney findOne(Integer id){
         return repository.findById(id).get();
     }
