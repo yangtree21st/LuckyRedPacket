@@ -5,7 +5,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.zipcode.luckyMoney.Entity.Luckymoney;
+import org.zipcode.luckyMoney.Exception.LuckyMoneyException;
 import org.zipcode.luckyMoney.Repository.LuckymoneyRepository;
+import org.zipcode.luckyMoney.enums.ResultEnum;
 
 import javax.persistence.criteria.CriteriaBuilder;
 import java.math.BigDecimal;
@@ -39,10 +41,12 @@ public class LuckymoneyService {
         double money = luckymoney.getMoney().doubleValue();
 
         if(money < 10){
-            throw new Exception ("You give too few");
+            // return "You give too few")
+            throw new LuckyMoneyException(ResultEnum.FEW_MONEY);
 
         }else if ( money > 600){
-             throw new Exception("You give too much");
+            // return "You give too much"
+             throw new LuckyMoneyException(ResultEnum.MUCH_MONEY);
         }
 
 
