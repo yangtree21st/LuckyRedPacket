@@ -9,8 +9,11 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.zipcode.luckyMoney.Entity.Luckymoney;
 import org.zipcode.luckyMoney.Service.LuckymoneyService;
 
+
 import java.math.BigDecimal;
 import java.text.DecimalFormat;
+
+
 
 /**
  *Created by Yang Shu
@@ -28,11 +31,16 @@ public class LuckymoneyServiceTest {
     public void findOneTest(){
         Luckymoney luckymoney = luckymoneyService.findOne(11);
         Double result = 5.00;
-        DecimalFormat expertF = new DecimalFormat("0.00");
-        String expert = expertF.format(result);
-        String Actual = luckymoney.getMoney().toString();
+        BigDecimal expert = BigDecimal.valueOf(5.00);
+        BigDecimal Actual = luckymoney.getMoney();
 
-        Assert.assertEquals(expert,Actual);
+//        DecimalFormat expertF = new DecimalFormat("0.00");
+//        String expert = expertF.format(result);
+//        String Actual = luckymoney.getMoney().toString();
+
+//        Assert.assertTrue(expert.compareTo(Actual) == 0);
+        Assert.assertEquals(expert.compareTo(Actual), 0);
+//        Assert.assertEquals(expert,Actual);
     }
 
 }
